@@ -3,12 +3,12 @@ A demo version of a student administration system built of IPRC East Rwanda in c
 
 ## Technologies:
 MongoDB
-Expressjs
-Angularjs
+Expressjs,
+Angularjs,
 Nodejs
 
 ##Features:
-Student Application subsystem
-Internal Messaging
-Application Management
+Student Application subsystem,
+Internal Messaging,
+Application Management,
 ETC.
