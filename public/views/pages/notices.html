@@ -1,0 +1,43 @@
+<div class="contianer-fluid">
+  <div class="header">
+<div class="row">
+  <h3><span class="col-xs-8"><i class="fa fa-bell"></i> System Notifications</span></h3>
+  </div>
+  </div>
+ <div class="input-group col-xs-6 col-xs-offset-2">
+        <input type="text" class="form-control" ng-model="search" placeholder="Search notices...">
+      
+    </div>
+ <table class="table table-striped">
+ <caption>All system notices.</caption>
+    <thead>
+    <tr>
+      <th>Date</th>
+      <th>title</th>
+      <th>Message</th>
+     
+    </tr>
+    </thead>
+  <tbody>
+    <tr  ng-repeat="(id, notice) in notices | filter:search ">
+     <td>
+              {{ (notice.createdAt | date) || 'None' }}
+      
+      </td>
+       <td>
+    
+          {{ notice.title || 'None' }}
+     
+      </td>
+      <td>
+      
+          {{ notice.message || 'None' }}
+       
+      </td>
+ 
+    
+    </tr>
+    </tbody>
+  </table>
+  </div>
+

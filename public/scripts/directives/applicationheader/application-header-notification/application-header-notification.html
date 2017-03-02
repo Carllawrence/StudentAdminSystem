@@ -1,0 +1,30 @@
+<ul class="nav navbar-top-links navbar-right">
+
+    <li>
+         
+              <button uib-popover-template="dynamicPopover.templateUrl" popover-title="{{dynamicPopover.title}}" type="button" class="btn btn-default">Popover With Template</button>
+    </li>
+
+    <!-- /.dropdown -->
+    <li class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown">
+             <img ng-src="{{currentUser.picUrl}}" class="img-circle special-img"> {{currentUser.firstname}} {{currentUser.lastname}} <i class="fa fa-caret-down"></i>
+        </a>
+        <ul class="dropdown-menu dropdown-user">
+         
+           <li><a ui-sref="logout"><i class="fa fa-sign-out fa-fw"></i> Logout</a></li>
+            </li>
+            
+        </ul>
+        <!-- /.dropdown-user -->
+    </li>
+    <!-- /.dropdown -->
+</ul>
+
+  <script type="text/ng-template" id="myPopoverTemplate.html">
+        <div>{{dynamicPopover.content}}</div>
+        <div class="form-group">
+          <label>Popup Title:</label>
+          <input type="text" ng-model="dynamicPopover.title" class="form-control">
+        </div>
+    </script>

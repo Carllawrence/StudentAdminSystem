@@ -1,0 +1,79 @@
+<ul class="nav navbar-top-links navbar-right">
+
+    <li class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown">
+            <i class="fa fa-envelope fa-1x"><sup><span class="badge">{{howManyMsg}}</span></sup></i>  <i class="fa fa-caret-down fa-1x"></i>
+        </a>
+        <ul class="dropdown-menu dropdown-messages">
+            <li ng-repeat ="mail in inboxMails">
+                <a ui-sref='dashboard.mail'>
+                    <div>
+                        <strong>From: {{mail.fromname}}</strong>
+                        <span class="pull-right text-muted">
+                            <em>{{mail.createdAt | date}}</em>
+                        </span>
+                    </div>
+                    <div>{{mail.subject | limitTo:40}}...</div>
+                </a>
+              
+            </li>
+          <li class="divider"></li>
+            <li>
+                <a class="text-center" ui-sref='dashboard.mail'>
+                    <strong>Read All Messages</strong>
+                    <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+        </ul>
+        <!-- /.dropdown-messages -->
+    </li>
+    
+    <!-- /.dropdown -->
+    <li class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown">
+            <i class="fa fa-bell fa-1x"><sup><span class="badge">{{howManyNotices}}</span></sup></i>  <i class="fa fa-caret-down fa-1x"></i>
+        </a>
+        <ul class="dropdown-menu dropdown-alerts">
+            <li ng-repeat="notice in notices">
+                <a ui-sref='dashboard.notices'>
+                    <div >
+                        <i class="fa fa-comment fa-fw"></i> {{notice.message}}
+                        <span class="pull-right text-muted small">{{notice.createdAt | date}}</span>
+                    </div>
+                </a>
+            </li>
+            <li class="divider"></li>
+           <li>
+                <a class="text-center" ui-sref='dashboard.notices'>
+                    <strong>See All Notices</strong>
+                    <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+        </ul>
+        <!-- /.dropdown-alerts -->
+    </li>
+
+
+    <!-- /.dropdown -->
+    <li class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown">
+             <img ng-src="{{currentUser.picUrl}}" class="img-circle special-img"> {{currentUser.firstname}} {{currentUser.lastname}} <i class="fa fa-caret-down"></i>
+        </a>
+        <ul  class="dropdown-menu dropdown-user" >
+      
+      
+            <li class="list-group" ng-repeat="hmenu in headermenus">
+           <a ui-sref="{{hmenu.url}}"><i class="fa fa-{{hmenu.icon}} fa-fw"></i> {{hmenu.name}}</a> 
+            </li>
+           
+           
+             </li>
+             </ul>
+        
+            
+      
+        <!-- /.dropdown-user -->
+    </li>
+    <!-- /.dropdown -->
+</ul>
+

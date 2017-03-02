@@ -1,0 +1,31 @@
+<div class="header"><h3><i class="fa fa-money"></i> Financial Transactions</h3></div>
+
+ <table class="table">
+      <thead>
+        <tr>
+          <th>A/C number</th>
+          <th>Transaction date</th>
+          <th>Transaction value date</th>
+          <th>User key</th>
+          <th>Reference Code</th>
+          <th>Operation Code</th>
+          <th>Description</th>
+          <th>Amount Debited</th>
+          <th>Amount Credited</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="payslip in payslips">
+          <td>{{payslip.ncp}}</td>
+          <td>{{payslip.dco | date}}</td>
+          <td>{{payslip.uti}}</td>
+          <td>{{payslip.pie}}</td>
+          <td>{{payslip.eve}}</td>
+          <td>{{payslip.ope}}</td>
+          <td>{{payslip.lib}}</td>
+          <td>{{payslip.debit}}</td>
+          <td>{{payslip.credit}}</td>
+
+        </tr>
+      </tbody>
+    </table>

@@ -1,0 +1,12 @@
+<div class="navbar-default sidebar" role="navigation">
+    <div class="sidebar-nav navbar-collapse">
+        <button class="btn btn-block" style="background-color: white;">
+        <img src="img/logo.jpg" class="img-circle" width="80%" style="border: 20px;"></button>
+        <ul class="nav in" id="side-menu" ng-repeat="menu in menus">
+            <li ui-sref-active="active">
+                <a class="btn-lg" ui-sref="{{menu.url}}"><i class="fa fa-{{menu.icon}} fa-fw"></i> {{menu.name}}</a>
+            </li>
+        </ul>
+    </div>
+    <!-- /.sidebar-collapse -->
+</div>

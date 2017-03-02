@@ -1,0 +1,17 @@
+<div class="container" style="padding-top: 5%">
+   <div class="header">
+    <h3><i class="fa fa-hourglass-start"></i> Application Status</h3>
+
+  </div>
+   <h4 class="text-center">Thank You!</h4>
+
+                    <h3 class="text-center"><strong>{{currentUser.lastname | uppercase}} {{currentUser.firstname}}</strong><br><small> Your application has been successfully submitted.<br> The status of your application is:</small></h3>
+                 
+                    <h1 class="text-center"><span ng-if="personalInfo.status < 4" class="label label-info">PROCESSING</span></h1>
+                     <h1 class="text-center"><span ng-if="personalInfo.status == 5" class="label label-danger">REJECTED</span></h1>
+                      <h1 class="text-center"><span ng-if="personalInfo.status == 6" class="label label-success">APPROVED</span></h1>
+
+
+                    <button class="btn btn-success btn-lg btn-block"  ng-if="personalInfo.status == 6" ng-disabled="personalInfo.status < 6" ng-click="acceptAdmission()">Congratulations! Proceed to Registration</button>
+               
+</div>

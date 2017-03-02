@@ -1,0 +1,91 @@
+<div class="contianer-fluid">
+  <div class="header">
+<div class="row">
+  <h3><span class="col-xs-10"><i class="fa fa-bell"></i> Manage System Notifications</span>
+
+  <span class="col-xs-2"><button type="button" class="btn btn-primary" ng-click="isCollapsed = !isCollapsed" class="btn btn-success col-xs-2"><i class="fa fa-bell"></i>  Create Notification</button></span></h3> </div>
+
+     </div>
+  
+
+  </div>
+
+</div>
+
+
+<div uib-collapse="!isCollapsed">
+<div class="well">
+<form ng-submit="notify(notify)">
+  
+  <div class="form-group">
+    <label for="notifyTitle"> Title</label>
+    <input class="form-control" ng-model="notify.title" id="notifyTitle">
+    
+  </div>
+ 
+  <div class="form-group">
+    <label for="notifyMessage">Message</label>
+    <textarea class="form-control" ng-model="notify.message" id="notifyMessage" rows="3"></textarea>
+  </div>
+  
+    <button type="submit" class="btn btn-primary">Send Notification</button>
+</form>
+</div>
+</div>
+
+ <div class="input-group col-xs-6 col-xs-offset-2">
+        <input type="text" class="form-control" ng-model="search" placeholder="Search users...">
+      
+    </div>
+
+<table class="table table-striped">
+ <caption>All System Users</caption>
+    <thead>
+    <tr>
+      <th>Date</th>
+      <th>title</th>
+      <th>Message</th>
+      <th>Actions</th>
+    </tr>
+    </thead>
+  <tbody>
+    <tr  ng-repeat="(id, notice) in notices | filter:search ">
+     <td>
+        <!-- editable username (text with validation) -->
+        <span editable-text="notice.createdAt" e-name="createdAt" e-form="rowform">
+          {{ (notice.createdAt | date) || 'None' }}
+        </span>
+      </td>
+       <td>
+        <!-- editable username (text with validation) -->
+        <span editable-text="notice.title" e-name="title" e-form="rowform">
+          {{ notice.title || 'None' }}
+        </span>
+      </td>
+      <td>
+        <!-- editable username (text with validation) -->
+        <span editable-text="notice.message" e-name="message" e-form="rowform">
+          {{ notice.message || 'None' }}
+        </span>
+      </td>
+ 
+      <td style="white-space: nowrap">
+        <!-- form -->
+        <form editable-form name="rowform" onbeforesave="saveNotice($data, notice._id)" ng-show="rowform.$visible" class="form-buttons form-inline" shown="inserted == notice">
+          <button type="submit" ng-disabled="rowform.$waiting" class="btn btn-primary">
+            save
+          </button>
+          <button type="button" ng-disabled="rowform.$waiting" ng-click="rowform.$cancel()" class="btn btn-default">
+            cancel
+          </button>
+        </form>
+        <div class="buttons" ng-show="!rowform.$visible">
+          <button type="button" class="btn btn-primary" ng-click="rowform.$show()">edit</button>
+          <button type="button" class="btn btn-danger" ng-click="removeNotice($index)">del</button>
+        </div>  
+      </td>
+    </tr>
+    </tbody>
+  </table>
+  </div>
+

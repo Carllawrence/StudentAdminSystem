@@ -1,0 +1,88 @@
+<div class="container-fluid">
+ <div class="header"><h3><i class="fa fa-user"></i> {{currentUser.firstname}}'s' Profile   <button type="button" class="btn btn-default" ng-click="editableForm.$show()" ng-show="!editableForm.$visible">
+        <span class="fa fa-edit"></span>
+      </button></h3></div>
+
+    <div class="media">
+    
+
+     
+            
+  <div class="media-left">
+    
+      <img class="media-object thumb" ng-src="/{{currentUser.picUrl}}" alt="Profile Picture">
+
+  </div>
+  <div class="media-body">
+        <div class="row">
+        <div class="col-xs-4">
+    <h3 class="media-heading">{{currentUser.lastname | uppercase}} </h3>
+    <h4>{{currentUser.firstname}}</h4>
+   <hr class="my-2">
+
+      </div>
+   
+  
+
+
+
+   <form editable-form name="editableForm" onaftersave="saveUser()">
+ 
+<div class="col-xs-8">
+<div>
+<strong>Phone</strong><br>
+ <span editable-tel="personalInfo.telephone.number" e-placeholder="07x-xxx-xxxx">
+
+ <address>
+  
+ <abbr title="Phone">P:</abbr> {{personalInfo.telephone.number || 'incomplete' }}
+</address>
+</span> </div>
+
+     <div> <strong>Address</strong><br> <span editable-text="personalInfo.address"  e-style="width: 200%" e-required e-uib-typeahead="add as add.Village + ' in (' + add.Province + ',' + add.Sector + ',' + add.Cellule + ')' for add in rwandaAddress |filter: {Village: $viewValue} | orderBy: Code_Vill | limitTo:10">
+
+
+ <address>
+ 
+ <abbr title="Province">Province:</abbr>{{personalInfo.address.Province}}<br>
+   <abbr title="Province">Sector:</abbr>{{personalInfo.address.Sector}}<br>
+   <abbr title="Province">Cell:</abbr> {{personalInfo.address.Cellule}}<br>
+     <abbr title="Province">Village:</abbr>{{personalInfo.address.Village}}
+  
+</address>
+  </span>
+
+        </div> 
+  
+
+    <div>
+      <!-- button to show form -->
+     
+      <!-- buttons to submit / cancel form -->
+      <span ng-show="editableForm.$visible">
+      <br>
+        <button type="submit" class="btn btn-primary" ng-disabled="editableForm.$waiting">
+          Save
+        </button>
+        <button type="button" class="btn btn-default" ng-disabled="editableForm.$waiting" ng-click="editableForm.$cancel()">
+          Cancel
+        </button>
+      </span>
+    </div>
+  </form>  </div>  </div>
+
+  </div>
+  </div>
+</div>
+
+
+
+			
+
+
+	
+    
+
+
+
+

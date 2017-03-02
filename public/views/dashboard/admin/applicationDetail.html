@@ -1,0 +1,169 @@
+
+   
+<div class="row"> 
+  <div class="header col-xs-8"><h2><i class="fa fa-file-text-o"></i> Application Details   
+   <button ng-show="application.status == 4" type="button" class="btn btn-primary" ng-click="isCollapsed = !isCollapsed" class="btn btn-success col-xs-2"><i class="fa fa-gavel"></i>  Decision</button>
+  </h2>
+
+
+  </div>
+
+
+</div>
+<div ng-show="application.status > 4" class="well"><h4>
+ <span ng-if="application.decision == 1"  class="label label-success">Accepted</span>
+<span ng-if="application.decision == 2" class="label label-danger">Rejected</span>
+ <span>:{{application.comments}}    Approver: {{application.approver}}</span> <br>
+
+</h4>
+ </div>
+
+<div uib-collapse="!isCollapsed">
+<div class="well">
+<form ng-submit="decision(application.userid, application._id, decision)">
+  
+  <div class="form-group">
+    <label for="exampleSelect1"> Decision</label>
+    <select class="form-control" ng-model="decision.code" id="exampleSelect1">
+      <option value="1">Approve</option>
+      <option value="2">Reject</option>
+      <option value="3">Conditional Acceptance</option>
+     </select>
+  </div>
+ 
+  <div class="form-group">
+    <label for="exampleTextarea">Comments</label>
+    <textarea class="form-control" ng-model="decision.comments" id="exampleTextarea" rows="3"></textarea>
+  </div>
+  
+    <button type="submit" class="btn btn-primary">Submit Decision</button>
+</form>
+</div>
+</div>
+
+<div class="row">
+     <div class="col-xs-2"><img ng-src="{{application.picUrl}}" class="img-thumbnail"></div>
+     <div class="col-xs-6">
+   <h3 class="display-3" >{{application.lastname | uppercase}}, {{application.firstname}}  </h3>
+   <h4>{{application.DOB | date}}</h4>
+   <h4>{{application.tel}}</h4>
+   <h4>{{application.email}}</h4>
+   </div>
+</div>
+    <hr class="my-2">
+    
+</div>
+
+<div> 
+ <table class="table table-striped">
+     <caption><h4> Relevant Documents </h4></caption>
+    <thead>
+      <tr>
+        <th>Document Description</th>
+        <th>Url Link</th>
+       </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="item in application.docs">
+        <td>{{item.name}}</td>
+        <td><a href="http://192.168.9.182:3001/{{item.url}}" target="_blank"><i class="fa fa-external-link"></i></a></td>
+    
+      </tr>
+     
+    </tbody>
+  </table>
+
+</div>
+
+<div> 
+ <table class="table table-striped">
+     <caption><h4> Academic Choices </h4></caption>
+    <thead>
+      <tr>
+        <th>Choice</th>
+        <th>Rank</th>
+       </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="item in application.choice">
+        <td>{{item.choice}}</td>
+        <td>{{application.choice.indexOf(item)+1}}</td>
+    
+      </tr>
+     
+    </tbody>
+  </table>
+
+</div>
+<div> 
+ <table class="table table-striped">
+     <caption><h4> Refferees </h4></caption>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Occupation</th>
+        <th>Telephone</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="item in application.refs">
+        <td>{{item.name}}</td>
+        <td>{{item.email}}</td>
+        <td>{{item.occupation}}</td>
+        <td>{{item.tel}}</td>
+      </tr>
+     
+    </tbody>
+  </table>
+
+</div>
+
+<div> 
+ <table class="table table-striped">
+     <caption><h4> Work History </h4></caption>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Start Date</th>
+        <th>End Date</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="item in application.orgs">
+        <td>{{item.name}}</td>
+        <td>{{item.description}}</td>
+        <td>{{item.start | date}}</td>
+        <td>{{item.end | date}}</td>
+      </tr>
+     
+    </tbody>
+  </table>
+
+</div>
+<div>
+    <table class="table table-striped">
+     <caption><h4> Academic History </h4></caption>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Grade</th>
+        <th>Department</th>
+        <th>Exammination Authority</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="item in application.academics">
+        <td>{{item.name}}</td>
+        <td>{{item.grade}}</td>
+        <td>{{item.dept}}</td>
+        <td>{{item.examAuth}}</td>
+      </tr>
+     
+    </tbody>
+  </table>
+
+</div>
+
+

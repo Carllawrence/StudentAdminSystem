@@ -1,0 +1,41 @@
+
+<div class="header"><h2><i class="fa fa-newspaper-o"></i> Student Applications</h2></div>
+<div>
+  <table class="table table-striped">
+     <caption>Applications Submitted by Prospective Students</caption>
+       <thead >
+              <tr>
+                <th>Picture</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Telephone</th>
+                <th>Email</th>
+                <th>Status</th>
+
+              </tr>
+       </thead>
+              <tr ng-repeat="app in allApplications">
+                <td >
+                <img ng-if="app.picUrl" ng-src="{{app.picUrl}}" class="img-square special-img"></td>
+                
+                <td>{{app.firstname}}</td>
+                <td>{{app.lastname}}</td>
+                 <td>{{app.tel}}</td>
+ <td>{{app.email}}</td>
+ <td>
+
+ <span ng-if="app.status < 4" class="label label-info">In progress</span>
+
+  <span ng-if="app.status == 4" class="label label-warning">Submitted</span>
+  <span ng-if="app.status == 6" class="label label-success">Approved</span>
+  <span ng-if="app.status == 5" class="label label-danger">Rejected</span></td>
+
+                <td style="white-space: nowrap">
+                 
+                    <a ui-sref="dashboard.applicationDetail({appIndex:allApplications.indexOf(app)})"><i class="fa fa-eye"></i></a>
+                   
+                
+                </td>
+              </tr>
+            </table>
+</div>

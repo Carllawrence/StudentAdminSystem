@@ -1,0 +1,27 @@
+<nav class="navbar navbar-default navbar-fixed-top navbar-custom" role="navigation" style="margin-bottom: 0">
+<div class="navbar-header">
+    <!-- collapsed menu will show hamburger icon-bar -->
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+    <a class="navbar-brand" ui-sref="{{topmenu.url}}"><span>STARS App<sup>®</sup> 1.0 </span></a>
+</div> 
+
+
+
+       <ul ui-sref-active="application.applicationForm" class="nav navbar-nav navbar-left">
+        
+         
+          <li>
+          <a ui-sref="{{topmenu.url}}"><span class="label label-warning">{{topmenu.name | uppercase}}</span> </a></li></ul>
+
+
+<!-- /.navbar-header -->
+<!-- loads header-notification directive -->
+<header-notification></header-notification>
+<!-- loads sidebar directive -->
+<sidebar></sidebar>
+</nav>
